@@ -846,6 +846,7 @@ let EnemyHitBoolean = 0
 let SwordStrength = 0
 let mySprite: Sprite = null
 tiles.setCurrentTilemap(tilemap`Dungeon 1`)
+let statusbar2 = statusbars.create(20, 4, StatusBarKind.Health)
 mySprite = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
@@ -864,6 +865,9 @@ mySprite = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
+statusbar2.attachToSprite(mySprite)
+statusbar2.setLabel("HP")
+statusbar2.value = 100
 info.setLife(3)
 SwordStrength = -20
 EnemyHitBoolean = 0
