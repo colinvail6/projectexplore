@@ -1,7 +1,8 @@
-controller.up.onEvent(ControllerButtonEvent.Pressed, function on_up_pressed() {
-    
+def on_up_pressed():
+    global facingdirection
     facingdirection = 3
-    animation.runImageAnimation(mySprite, [img`
+    animation.run_image_animation(mySprite,
+        [img("""
             . . . . . . f f f f . . . . . .
             . . . . f f e e e e f f . . . .
             . . . f e e e f f e e e f . . .
@@ -18,7 +19,8 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function on_up_pressed() {
             . . 4 4 f 4 4 4 4 4 4 f 4 4 . .
             . . . . . f f f f f f . . . . .
             . . . . . f f . . f f . . . . .
-        `, img`
+        """),
+            img("""
                 . . . . . . . . . . . . . . . . 
                         . . . . . . f f f f . . . . . . 
                         . . . . f f e e e e f f . . . . 
@@ -35,7 +37,8 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function on_up_pressed() {
                         . . . 4 f 2 2 2 2 2 e d d 4 . . 
                         . . . e f f f f f f e e 4 . . . 
                         . . . . f f f . . . . . . . . .
-            `, img`
+            """),
+            img("""
                 . . . . . . f f f f . . . . . . 
                         . . . . f f e e e e f f . . . . 
                         . . . f e e e f f e e e f . . . 
@@ -52,7 +55,8 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function on_up_pressed() {
                         . . 4 4 f 4 4 4 4 4 4 f 4 4 . . 
                         . . . . . f f f f f f . . . . . 
                         . . . . . f f . . f f . . . . .
-            `, img`
+            """),
+            img("""
                 . . . . . . . . . . . . . . . . 
                         . . . . . . f f f f . . . . . . 
                         . . . . f f e e e e f f . . . . 
@@ -69,12 +73,15 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function on_up_pressed() {
                         . . 4 d d e 2 2 2 2 2 f 4 . . . 
                         . . . 4 e e f f f f f f e . . . 
                         . . . . . . . . . f f f . . . .
-            `], 100, false)
-})
-controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
-    
-    if (facingdirection == 1) {
-        projectile = sprites.createProjectileFromSprite(img`
+            """)],
+        100,
+        False)
+controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
+
+def on_a_pressed():
+    global projectile, EnemyHitBoolean
+    if facingdirection == 1:
+        projectile = sprites.create_projectile_from_sprite(img("""
                 . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . . 
@@ -91,8 +98,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                             . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . .
-            `, mySprite, 50, 50)
-        animation.runImageAnimation(mySprite, [img`
+            """),
+            mySprite,
+            50,
+            50)
+        animation.run_image_animation(mySprite,
+            [img("""
                     ........................
                                 ....ffffff..............
                                 ..ffeeeef2f.............
@@ -117,7 +128,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `, img`
+                """),
+                img("""
                     ........................
                                 .......fff..............
                                 ....fffff2f.............
@@ -142,7 +154,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `, img`
+                """),
+                img("""
                     .......ff...............
                                 ....ffff2ff.............
                                 ..ffeeeef2ff............
@@ -167,7 +180,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `, img`
+                """),
+                img("""
                     ....ffffff..............
                                 ..ffeeeef2f.............
                                 .ffeeeef222f............
@@ -192,17 +206,15 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `], 100, false)
-        if (mySprite.overlapsWith(myEnemy)) {
+                """)],
+            100,
+            False)
+        if mySprite.overlaps_with(myEnemy):
             EnemyHitBoolean = 1
-        } else {
+        else:
             EnemyHitBoolean = 0
-        }
-        
-    }
-    
-    if (facingdirection == 2) {
-        projectile = sprites.createProjectileFromSprite(img`
+    if facingdirection == 2:
+        projectile = sprites.create_projectile_from_sprite(img("""
                 . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . . 
@@ -219,8 +231,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                             . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . .
-            `, mySprite, 50, 50)
-        animation.runImageAnimation(mySprite, [img`
+            """),
+            mySprite,
+            50,
+            50)
+        animation.run_image_animation(mySprite,
+            [img("""
                     ..............ffffff....
                                 .............f2feeeeff..
                                 ............f222feeeeff.
@@ -245,7 +261,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `, img`
+                """),
+                img("""
                     ........................
                                 ..............fff.......
                                 .............f2fffff....
@@ -270,7 +287,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `, img`
+                """),
+                img("""
                     ...............ff.......
                                 .............ff2ffff....
                                 ............ff2feeeeff..
@@ -295,7 +313,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `, img`
+                """),
+                img("""
                     ..............ffffff....
                                 .............f2feeeeff..
                                 ............f222feeeeff.
@@ -320,17 +339,15 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `], 100, false)
-        if (mySprite.overlapsWith(myEnemy)) {
+                """)],
+            100,
+            False)
+        if mySprite.overlaps_with(myEnemy):
             EnemyHitBoolean = 1
-        } else {
+        else:
             EnemyHitBoolean = 0
-        }
-        
-    }
-    
-    if (facingdirection == 3) {
-        projectile = sprites.createProjectileFromSprite(img`
+    if facingdirection == 3:
+        projectile = sprites.create_projectile_from_sprite(img("""
                 . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . . 
@@ -347,8 +364,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                             . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . .
-            `, mySprite, 50, 50)
-        animation.runImageAnimation(mySprite, [img`
+            """),
+            mySprite,
+            50,
+            50)
+        animation.run_image_animation(mySprite,
+            [img("""
                     ........................
                                 .....ffff...............
                                 ...fff22fff.............
@@ -373,7 +394,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `, img`
+                """),
+                img("""
                     ........................
                                 ......ffff..............
                                 ....fff22fff............
@@ -398,7 +420,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `, img`
+                """),
+                img("""
                     ........................
                                 ........................
                                 .......ff...............
@@ -423,7 +446,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 .........c1c............
                                 .........c1c............
                                 .........c1c............
-                `, img`
+                """),
+                img("""
                     ......ffff..............
                                 ....fff22fff............
                                 ...fff2222fff...........
@@ -448,17 +472,15 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `], 100, false)
-        if (mySprite.overlapsWith(myEnemy)) {
+                """)],
+            100,
+            False)
+        if mySprite.overlaps_with(myEnemy):
             EnemyHitBoolean = 1
-        } else {
+        else:
             EnemyHitBoolean = 0
-        }
-        
-    }
-    
-    if (facingdirection == 4) {
-        projectile = sprites.createProjectileFromSprite(img`
+    if facingdirection == 4:
+        projectile = sprites.create_projectile_from_sprite(img("""
                 . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . . 
@@ -475,8 +497,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                             . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . . 
                             . . . . . . . . . . . . . . . .
-            `, mySprite, 50, 50)
-        animation.runImageAnimation(mySprite, [img`
+            """),
+            mySprite,
+            50,
+            50)
+        animation.run_image_animation(mySprite,
+            [img("""
                     ........................
                                 .....ffff...............
                                 ...fff22fff.............
@@ -501,7 +527,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `, img`
+                """),
+                img("""
                     ........................
                                 ......ffff..............
                                 ....fff22fff............
@@ -526,7 +553,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `, img`
+                """),
+                img("""
                     ........................
                                 ........................
                                 .......ff...............
@@ -551,7 +579,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 .........c1c............
                                 .........c1c............
                                 .........c1c............
-                `, img`
+                """),
+                img("""
                     ......ffff..............
                                 ....fff22fff............
                                 ...fff2222fff...........
@@ -576,28 +605,24 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                                 ........................
                                 ........................
                                 ........................
-                `], 100, false)
-        if (mySprite.overlapsWith(myEnemy)) {
+                """)],
+            100,
+            False)
+        if mySprite.overlaps_with(myEnemy):
             EnemyHitBoolean = 1
-        } else {
+        else:
             EnemyHitBoolean = 0
-        }
-        
-    }
-    
-    if (EnemyHitBoolean == 1) {
+    if EnemyHitBoolean == 1:
         statusbar.value += SwordStrength
-    }
-    
-    if (statusbar.value == 0) {
+    if statusbar.value == 0:
         sprites.destroy(myEnemy)
-    }
-    
-})
-controller.left.onEvent(ControllerButtonEvent.Pressed, function on_left_pressed() {
-    
+controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
+
+def on_left_pressed():
+    global facingdirection
     facingdirection = 2
-    animation.runImageAnimation(mySprite, [img`
+    animation.run_image_animation(mySprite,
+        [img("""
                 . . . . f f f f f f . . . . . . 
                         . . . f 2 f e e e e f f . . . . 
                         . . f 2 2 2 f e e e e f f . . . 
@@ -614,7 +639,8 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function on_left_pressed(
                         . . . f 5 5 4 f e e f . . . . . 
                         . . . . f f f f f f . . . . . . 
                         . . . . . . f f f . . . . . . .
-            `, img`
+            """),
+            img("""
                 . . . . . . . . . . . . . . . . 
                         . . . . f f f f f f . . . . . . 
                         . . . f 2 f e e e e f f . . . . 
@@ -631,7 +657,8 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function on_left_pressed(
                         . . f f 5 5 f e e f f f . . . . 
                         . . f f f f f f f f f f . . . . 
                         . . . f f f . . . f f . . . . .
-            `, img`
+            """),
+            img("""
                 . . . . f f f f f f . . . . . . 
                         . . . f 2 f e e e e f f . . . . 
                         . . f 2 2 2 f e e e e f f . . . 
@@ -648,7 +675,8 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function on_left_pressed(
                         . . . f 5 5 4 f e e f . . . . . 
                         . . . . f f f f f f . . . . . . 
                         . . . . . . f f f . . . . . . .
-            `, img`
+            """),
+            img("""
                 . . . . . . . . . . . . . . . . 
                         . . . . f f f f f f . . . . . . 
                         . . . f 2 f e e e e f f . . . . 
@@ -665,12 +693,16 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function on_left_pressed(
                         . . f f 5 5 4 4 f e e f . . . . 
                         . . f f f f f f f f f f . . . . 
                         . . . f f f . . . f f . . . . .
-            `], 100, false)
-})
-controller.right.onEvent(ControllerButtonEvent.Pressed, function on_right_pressed() {
-    
+            """)],
+        100,
+        False)
+controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
+
+def on_right_pressed():
+    global facingdirection
     facingdirection = 1
-    animation.runImageAnimation(mySprite, [img`
+    animation.run_image_animation(mySprite,
+        [img("""
                 . . . . . . f f f f f f . . . . 
                         . . . . f f e e e e f 2 f . . . 
                         . . . f f e e e e f 2 2 2 f . . 
@@ -687,7 +719,8 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function on_right_presse
                         . . . . . f e e f 4 5 5 f . . . 
                         . . . . . . f f f f f f . . . . 
                         . . . . . . . f f f . . . . . .
-            `, img`
+            """),
+            img("""
                 . . . . . . . . . . . . . . . . 
                         . . . . . . f f f f f f . . . . 
                         . . . . f f e e e e f 2 f . . . 
@@ -704,7 +737,8 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function on_right_presse
                         . . . . f f f e e f 5 5 f f . . 
                         . . . . f f f f f f f f f f . . 
                         . . . . . f f . . . f f f . . .
-            `, img`
+            """),
+            img("""
                 . . . . . . f f f f f f . . . . 
                         . . . . f f e e e e f 2 f . . . 
                         . . . f f e e e e f 2 2 2 f . . 
@@ -721,7 +755,8 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function on_right_presse
                         . . . . . f e e f 4 5 5 f . . . 
                         . . . . . . f f f f f f . . . . 
                         . . . . . . . f f f . . . . . .
-            `, img`
+            """),
+            img("""
                 . . . . . . . . . . . . . . . . 
                         . . . . . . f f f f f f . . . . 
                         . . . . f f e e e e f 2 f . . . 
@@ -738,12 +773,16 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function on_right_presse
                         . . . . f e e f 4 4 5 5 f f . . 
                         . . . . f f f f f f f f f f . . 
                         . . . . . f f . . . f f f . . .
-            `], 100, false)
-})
-controller.down.onEvent(ControllerButtonEvent.Pressed, function on_down_pressed() {
-    
+            """)],
+        100,
+        False)
+controller.right.on_event(ControllerButtonEvent.PRESSED, on_right_pressed)
+
+def on_down_pressed():
+    global facingdirection
     facingdirection = 4
-    animation.runImageAnimation(mySprite, [img`
+    animation.run_image_animation(mySprite,
+        [img("""
                 . . . . . . f f f f . . . . . . 
                         . . . . f f f 2 2 f f f . . . . 
                         . . . f f f 2 2 2 2 f f f . . . 
@@ -760,7 +799,8 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function on_down_pressed(
                         . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
                         . . . . . f f f f f f . . . . . 
                         . . . . . f f . . f f . . . . .
-            `, img`
+            """),
+            img("""
                 . . . . . . . . . . . . . . . . 
                         . . . . . . f f f f . . . . . . 
                         . . . . f f f 2 2 f f f . . . . 
@@ -777,7 +817,8 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function on_down_pressed(
                         . . . . f 4 4 5 5 f e e . . . . 
                         . . . . f f f f f f f . . . . . 
                         . . . . f f f . . . . . . . . .
-            `, img`
+            """),
+            img("""
                 . . . . . . f f f f . . . . . . 
                         . . . . f f f 2 2 f f f . . . . 
                         . . . f f f 2 2 2 2 f f f . . . 
@@ -794,7 +835,8 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function on_down_pressed(
                         . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
                         . . . . . f f f f f f . . . . . 
                         . . . . . f f . . f f . . . . .
-            `, img`
+            """),
+            img("""
                 . . . . . . . . . . . . . . . . 
                         . . . . . . f f f f . . . . . . 
                         . . . . f f f 2 2 f f f . . . . 
@@ -811,20 +853,23 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function on_down_pressed(
                         . . . . e e f 5 5 4 4 f . . . . 
                         . . . . . f f f f f f f . . . . 
                         . . . . . . . . . f f f . . . .
-            `], 100, false)
-})
-let projectile : Sprite = null
-let facingdirection = 0
-let myEnemy : Sprite = null
-let statusbar : StatusBarSprite = null
-let EnemyHitBoolean = 0
-let SwordStrength = 0
-let mySprite : Sprite = null
-tiles.setCurrentTilemap(tilemap`
+            """)],
+        100,
+        False)
+controller.down.on_event(ControllerButtonEvent.PRESSED, on_down_pressed)
+
+projectile: Sprite = None
+facingdirection = 0
+myEnemy: Sprite = None
+statusbar: StatusBarSprite = None
+EnemyHitBoolean = 0
+SwordStrength = 0
+mySprite: Sprite = None
+tiles.set_current_tilemap(tilemap("""
     Dungeon 1
-`)
-let statusbar2 = statusbars.create(20, 4, StatusBarKind.Health)
-mySprite = sprites.create(img`
+"""))
+statusbar2 = statusbars.create(20, 4, StatusBarKind.health)
+mySprite = sprites.create(img("""
         . . . . . . f f f f . . . . . . 
             . . . . f f f 2 2 f f f . . . . 
             . . . f f f 2 2 2 2 f f f . . . 
@@ -841,15 +886,16 @@ mySprite = sprites.create(img`
             . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
             . . . . . f f f f f f . . . . . 
             . . . . . f f . . f f . . . . .
-    `, SpriteKind.Player)
-statusbar2.attachToSprite(mySprite)
-statusbar2.setLabel("HP")
+    """),
+    SpriteKind.player)
+statusbar2.attach_to_sprite(mySprite)
+statusbar2.set_label("HP")
 statusbar2.value = 100
-info.setLife(3)
+info.set_life(3)
 SwordStrength = -20
 EnemyHitBoolean = 0
-statusbar = statusbars.create(20, 4, StatusBarKind.Health)
-myEnemy = sprites.create(img`
+statusbar = statusbars.create(20, 4, StatusBarKind.health)
+myEnemy = sprites.create(img("""
         . . . . c c c c c c . . . . . . 
             . . . c 6 7 7 7 7 6 c . . . . . 
             . . c 7 7 7 7 7 7 7 7 c . . . . 
@@ -866,15 +912,17 @@ myEnemy = sprites.create(img`
             f 6 1 1 1 1 1 6 6 6 6 6 c f . . 
             . f 6 1 1 1 1 1 1 6 6 6 f . . . 
             . . c c c c c c c c c f . . . .
-    `, SpriteKind.Enemy)
-statusbar.attachToSprite(myEnemy, 0, 0)
+    """),
+    SpriteKind.enemy)
+statusbar.attach_to_sprite(myEnemy, 0, 0)
 statusbar.value = 100
-statusbar.setLabel("HP")
-scene.cameraFollowSprite(mySprite)
-controller.moveSprite(mySprite, 100, 100)
-tiles.placeOnTile(mySprite, tiles.getTileLocation(15, 1))
-tiles.placeOnTile(myEnemy, tiles.getTileLocation(0, 19))
+statusbar.set_label("HP")
+scene.camera_follow_sprite(mySprite)
+controller.move_sprite(mySprite, 100, 100)
+tiles.place_on_tile(mySprite, tiles.get_tile_location(15, 1))
+tiles.place_on_tile(myEnemy, tiles.get_tile_location(0, 19))
 myEnemy.follow(mySprite, 45)
-forever(function on_forever() {
-    
-})
+
+def on_forever():
+    pass
+forever(on_forever)
